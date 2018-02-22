@@ -11,8 +11,9 @@ var app = express();
 var con = require('./models/conexion');
 
 // Importar rutas
-var appRoutes = require('./routes/app');
 var ofertaRutas = require('./routes/ofertas');
+var categoriasRoutes = require('./routes/categorias');
+var appRoutes = require('./routes/app');
 
 
 // body parser
@@ -23,18 +24,10 @@ app.use(bodyParser.json());
 
 
 // Rutas
+app.use('/categoria', categoriasRoutes);
 app.use('/Ofertas', ofertaRutas);
 app.use('/', appRoutes);
 
-// app.get('/categoria', (request, response, next) => {
-//     response.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-//     con.query("select e.descorta, substring(e.descrip, 1,180) descrip, e.clave, e.ruta, e.modelo, e.price, e.id from equipos_Categoria ec inner join equipos e on e.id=ec.idEquipo and idCategoria=78 where e.idstatus=1 order by descorta",
-//         function(err, rows) {
-//             response.status(200).json({ // Respuesta con codigo 200 que significa que todo esta bien 
-//                 data: rows
-//             });
-//         });
-// });
 
 
 // Iniciar servidor y esperar peticiones
