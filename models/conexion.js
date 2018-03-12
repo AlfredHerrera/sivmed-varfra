@@ -5,7 +5,7 @@ var con = mysql.createConnection({
     user: "root",
     password: "root",
     database: "varfra",
-    port: '8889',
+    port: '3306',
     socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
 });
 

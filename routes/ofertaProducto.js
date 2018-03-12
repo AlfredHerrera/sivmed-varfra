@@ -15,19 +15,6 @@ app.all('/', function(req, res, next) {
     return next();
 });
 
-//  equiposNuevos
-app.get('/', (request, response, next) => {
-    response.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-    response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization,   Content-Type, X-Requested-With");
-    response.header("Access-Control-Allow-Methods", "GET, PUT, POST");
-    con.query("select e.descorta, substring(e.descrip, 1,180) descrip, e.clave, e.ruta, e.modelo, e.price, e.id from ofertas e where idStatus = 4",
-        function(err, rows) {
-            response.status(200).json({ // Respuesta con codigo 200 que significa que todo esta bien 
-                data: rows
-            });
-        });
-});
 
 // =============================
 // Obtener Equipos mediante post
@@ -36,20 +23,20 @@ app.get('/', (request, response, next) => {
 app.post('/', (req, res) => {
 
     var body = req.body; // Hacemos referencia body-parse
-    var query = `select e.descorta, substring(e.descrip, 1,180) descrip, e.clave, e.ruta, e.modelo, e.price, e.id from ofertas e where idStatus = ${body.numero} ORDER BY RAND()`;
+    var query = `select e.id, e.ruta, e.clave, e.descorta, lower(e.descorta)desc_title, e.descrip, e.price, e.modelo, e.grupo from ofertas e where modelo= '${body.id}'`;
     con.query(query,
         (err, rows) => {
             if (err) {
                 return res.status(500).json({
                     ok: false,
-                    mensaje: 'Error al consultar ofertas',
-                    errors: err
+                    mensaje: 'Error al consultar producto',
+                    errors: err,
                 });
             }
 
             res.status(200).json({ // Respuesta con codigo 200 que significa que todo esta bien 
                 ok: true,
-                data: rows
+                data: rows,
             });
         });
 
