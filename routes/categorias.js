@@ -20,6 +20,32 @@ app.all('/', function(req, res, next) {
 // Obtener Equipos de la categoria post
 // =====================================
 
+app.get('/', (req, res) => {
+    var query;
+    query = `select e.descorta, substring(e.descrip, 1,180) descrip, e.clave, e.ruta, e.modelo, e.price, e.id from equipos_Categoria ec inner join equipos e on e.id=ec.idEquipo where e.idstatus=1 ORDER BY RAND()`;
+    con.query(query,
+        (err, rows) => {
+            if (err) {
+                return res.status(500).json({
+                    ok: false,
+                    mensaje: 'Error al consultar productos',
+                    errors: err,
+                });
+            }
+
+            res.status(200).json({ // Respuesta con codigo 200 que significa que todo esta bien 
+                ok: true,
+                data: rows
+            });
+        });
+});
+
+
+
+// =====================================
+// Obtener Equipos de la categoria post
+// =====================================
+
 app.post('/', (req, res) => {
 
     var query
