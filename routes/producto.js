@@ -23,7 +23,7 @@ app.all('/', function(req, res, next) {
 app.post('/', (req, res) => {
 
     var body = req.body; // Hacemos referencia body-parse
-    var query = `select e.id, e.ruta, e.clave, e.descorta, lower(e.descorta)desc_title, e.descrip, e.price, e.modelo, e.grupo from equipos e where modelo= '${body.id}'`;
+    var query = `select e.descorta, substring(e.descrip, 1,180) descrip, e.clave, e.ruta, e.modelo, e.price, e.id from equipos_Categoria ec inner join equipos e on e.id=ec.idEquipo where e.modelo = '${body.id}' UNION ALL select e.descorta, substring(e.descrip, 1,180) descrip, e.clave, e.ruta, e.modelo, e.price, e.id from ofertas e where e.modelo = '${body.id}'`
     con.query(query,
         (err, rows) => {
             if (err) {

@@ -13,6 +13,12 @@ transporter = nodemailer.createTransport({
     }
 });
 
+app.all('/', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization,   Content-Type, X-Requested-With");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+    return next();
+});
 
 app.get('/', (req, res) => {
     // setup email data with unicode symbols
@@ -273,12 +279,8 @@ app.post('/', (req, res) => {
         res.status(200).json({ // Respuesta con codigo 200 que significa que todo esta bien 
             ok: true,
             data: info.messageId,
-            info: info
         });
     });
 });
-
-
-
 
 module.exports = app;
