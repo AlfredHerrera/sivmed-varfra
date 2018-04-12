@@ -48,13 +48,13 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
 
-    var query
+    var query;
     var body = req.body; // Hacemos referencia body-parse
     // var query = getSQl(body.numero, body.categorias);
     switch (body.numero) {
         case 1:
             query = `select e.descorta, substring(e.descrip, 1,180) descrip, e.clave, e.ruta, e.modelo, e.price, e.id from equipos_Categoria ec inner join equipos e on e.id=ec.idEquipo where e.idstatus=1 and idCategoria= ${body.categorias[0]} ORDER BY RAND()`;
-            break
+            break;
         case 2:
             query = `select e.descorta, substring(e.descrip, 1,180) descrip, e.clave, e.ruta, e.modelo, e.price, e.id from equipos_Categoria ec inner join equipos e on e.id=ec.idEquipo where e.idstatus=1 and idCategoria= ${body.categorias[0]} or idCategoria= ${body.categorias[1]} ORDER BY RAND()`;
             break;
