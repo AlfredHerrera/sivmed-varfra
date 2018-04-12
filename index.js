@@ -40,6 +40,7 @@ app.use('/', appRoutes);
 
 
 // Iniciar servidor y esperar peticiones
-app.listen(port, () => {
+app.listen(port, (err) => {
+    if (err) throw new Error(err);
     console.log(`Express server puerto ${port}: \x1b[32m%s\x1b[0m', 'online`);
 });
