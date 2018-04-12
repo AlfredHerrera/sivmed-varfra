@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 // Inicializar variables
 var app = express();
 
+const port = process.env.PORT || 3000;
+
 // Importacion de conexion;
 var con = require('./models/conexion');
 
@@ -38,6 +40,6 @@ app.use('/', appRoutes);
 
 
 // Iniciar servidor y esperar peticiones
-app.listen(3000, () => {
-    console.log('Express server puerto 3000: \x1b[32m%s\x1b[0m', 'online');
+app.listen(port, () => {
+    console.log(`Express server puerto ${port}: \x1b[32m%s\x1b[0m', 'online`);
 });
