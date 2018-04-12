@@ -21,7 +21,6 @@ app.get('/', (req, res) => {
     con.query(query,
         (err, rows) => {
             if (err) {
-
                 return res.status(500).json({
                     ok: false,
                     mensaje: 'Error al consultar ofertas',
