@@ -22,7 +22,7 @@ app.all('/', function(req, res, next) {
 // Obtener Equipos de la categoria post
 // =====================================
 
-app.get('/', (req, res) => {
+app.get('/Categorias', (req, res) => {
     var query;
     query = `select e.descorta, substring(e.descrip, 1,180) descrip, e.clave, e.ruta, e.modelo, e.price, e.id from equipos_Categoria ec inner join equipos e on e.id=ec.idEquipo where e.idstatus=1 ORDER BY RAND()`;
     con.query(query,

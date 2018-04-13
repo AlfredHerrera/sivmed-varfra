@@ -32,6 +32,7 @@ app.use(require('./routes/enviarCorreo'));
 app.use(require('./routes/ofertas'));
 app.use(require('./routes/categorias'));
 app.use(require('./routes/producto'));
+app.use(require('./routes/busqueda'));
 app.use(require('./routes/app'));
 // app.use('/Correo', correoRutas);
 // app.use('/Categorias', categoriasRoutes);
