@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 // Inicializar variables
 var app = express();
 
-const port = process.env.PORT || 3000;
+var port = process.env.PORT || 3000;
 
 // Importacion de conexion;
 var con = require('./models/conexion');
