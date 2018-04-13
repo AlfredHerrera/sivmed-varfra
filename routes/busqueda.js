@@ -3,7 +3,29 @@ var express = require('express');
 var app = express();
 
 // Importacion de conexion;
-var con = require('../models/conexion');
+var con = mysql.createConnection({
+    // host: "localhost",
+    // user: "root",
+    // password: "root",
+    // database: "varfra",
+    // port: '3306',
+    // socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
+    host: '173.254.61.85',
+    user: 'ventadee_equipo',
+    password: '51v.4dm1n.p455',
+    database: 'ventadee_todoenequipo',
+    port: '3306',
+    connectTimeout: 20000,
+    acquireTimeout: 20000
+
+});
+
+con.connect(function(err) {
+    if (err) {
+        console.log(err);
+    }
+    console.log('Base de datos ONLINE   hola');
+});
 
 // =====================================
 // Acceso total
