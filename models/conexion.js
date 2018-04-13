@@ -13,6 +13,7 @@ var con = mysql.createConnection({
     password: '51v.4dm1n.p455',
     database: 'ventadee_todoenequipo',
     port: '3306',
+    timeout: 60000,
     connectTimeout: 20000,
     acquireTimeout: 20000
 
