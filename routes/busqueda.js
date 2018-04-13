@@ -1,10 +1,9 @@
-/*jshint esversion: 6 */
-const express = require('express');
+var express = require('express');
 
-const app = express();
+var app = express();
 
 // Importacion de conexion;
-const con = require('../models/conexion');
+var con = require('../models/conexion');
 
 // =====================================
 // Acceso total
