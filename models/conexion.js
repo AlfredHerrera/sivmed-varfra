@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const mysql = require('mysql');
 
 const con = mysql.createConnection({
