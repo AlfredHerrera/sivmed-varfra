@@ -19,7 +19,7 @@ const ofertaRutas = require('./routes/ofertas');
 const categoriasRoutes = require('./routes/categorias');
 const productoRutas = require('./routes/producto');
 const busquedaRutas = require('./routes/busqueda');
-const appRoutes = require('./routes/app');
+// const appRoutes = require('./routes/app');
 
 
 // body parser
@@ -35,7 +35,7 @@ app.use('/Categorias', categoriasRoutes);
 app.use('/Ofertas', ofertaRutas);
 app.use('/Producto', productoRutas);
 app.use('/Busqueda', busquedaRutas);
-app.use('/', appRoutes);
+// app.use('/', appRoutes);
 
 
 
