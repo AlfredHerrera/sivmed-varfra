@@ -1,4 +1,3 @@
-'use strict';
 var express = require('express');
 var app = express();
 var nodemailer = require('nodemailer');
@@ -151,17 +150,17 @@ app.post('/Correo', (req, res) => {
 
     var body = req.body; // Hacemos referencia body-parse
     var fecha = new Date();
-    var dd = fecha.getDate()
+    var dd = fecha.getDate();
     var mm = fecha.getMonth() + 1; //hoy es 0!
     var yyyy = fecha.getFullYear();
     if (dd < 10) {
-        dd = '0' + dd
+        dd = '0' + dd;
     }
     if (mm < 10) {
-        mm = '0' + mm
+        mm = '0' + mm;
     }
     fecha = mm + '/' + dd + '/' + yyyy;
-    let mailOptions = {
+    var mailOptions = {
         from: 'medicalequipment14@gmail.com', // sender address
         to: 'sivmed.it@gmail.com, ing.alfredoherrera@hotmail.com', // list of receivers
         subject: 'Contacto desde Sivmedical.com', // Subject line
