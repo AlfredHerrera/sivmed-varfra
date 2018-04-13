@@ -35,6 +35,7 @@ app.get('/Busqueda', (req, res) => {
                 data: rows
             });
         });
+    con.end();
 });
 
 module.exports = app;
