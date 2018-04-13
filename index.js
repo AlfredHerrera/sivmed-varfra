@@ -14,42 +14,33 @@ const port = process.env.PORT || 3000;
 const con = require('./models/conexion');
 
 // Importar rutas
-const correoRutas = require('./routes/enviarCorreo');
-const ofertaRutas = require('./routes/ofertas');
-const categoriasRoutes = require('./routes/categorias');
-const productoRutas = require('./routes/producto');
-const busquedaRutas = require('./routes/busqueda');
+// var correoRutas = require('./routes/enviarCorreo');
+// var ofertaRutas = require('./routes/ofertas');
+// var categoriasRoutes = require('./routes/categorias');
+// var productoRutas = require('./routes/producto');
+// var busquedaRutas = require('./routes/busqueda');
 // const appRoutes = require('./routes/app');
 
-
-// body parser
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // si hay algo en el body que estemos enviando el body parser lo toma y lo combierte en un objeto de javascript
 app.use(bodyParser.json());
 
-
 // Rutas
-app.use('/Correo', correoRutas);
-app.use('/Categorias', categoriasRoutes);
-app.use('/Ofertas', ofertaRutas);
-app.use('/Producto', productoRutas);
-app.use('/Busqueda', busquedaRutas);
+
+app.use(require('./routes/enviarCorreo'));
+app.use(require('./routes/ofertas'));
+app.use(require('./routes/categorias'));
+app.use(require('./routes/producto'));
+app.use(require('./routes/app'));
+// app.use('/Correo', correoRutas);
+// app.use('/Categorias', categoriasRoutes);
+// app.use('/Ofertas', ofertaRutas);
+// app.use('/Producto', productoRutas);
+// app.use('/Busqueda', busquedaRutas);
 // app.use('/', appRoutes);
 
 
-app.get('/ofertas', (request, response, next) => {
-    response.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-    response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization,   Content-Type, X-Requested-With");
-    response.header("Access-Control-Allow-Methods", "GET, PUT, POST");
-    con.query("select e.descorta, substring(e.descrip, 1,180) descrip, e.clave, e.ruta, e.modelo, e.price, e.id from ofertas e where idStatus = 4",
-        function(err, rows) {
-            response.status(200).json({ // Respuesta con codigo 200 que significa que todo esta bien 
-                data: rows
-            });
-        });
-});
 
 
 

@@ -17,7 +17,7 @@ app.all('/', function(req, res, next) {
 });
 
 //  equiposNuevos
-app.get('/', (request, response, next) => {
+app.get('/ofertas', (request, response, next) => {
     response.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization,   Content-Type, X-Requested-With");
@@ -34,7 +34,7 @@ app.get('/', (request, response, next) => {
 // Obtener Equipos mediante post
 // =============================
 
-app.post('/', (req, res) => {
+app.post('/ofertas', (req, res) => {
 
     var body = req.body; // Hacemos referencia body-parse
     var query = `select e.descorta, substring(e.descrip, 1,180) descrip, e.clave, e.ruta, e.modelo, e.price, e.id from ofertas e where idStatus = ${body.numero} ORDER BY RAND()`;
