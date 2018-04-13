@@ -8,7 +8,9 @@ const bodyParser = require('body-parser');
 // Inicializar variables
 const app = express();
 
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
+
+const port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
 // Importacion de conexion;
 const con = require('./models/conexion');
