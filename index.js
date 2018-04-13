@@ -1,23 +1,25 @@
 // Requires
-var express = require('express');
-var mysql = require('mysql');
-var bodyParser = require('body-parser');
+/*jshint esversion: 6 */
+
+const express = require('express');
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
 
 // Inicializar variables
-var app = express();
+const app = express();
 
-var port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 // Importacion de conexion;
-var con = require('./models/conexion');
+const con = require('./models/conexion');
 
 // Importar rutas
-var correoRutas = require('./routes/enviarCorreo');
-var ofertaRutas = require('./routes/ofertas');
-var categoriasRoutes = require('./routes/categorias');
-var productoRutas = require('./routes/producto');
-var busquedaRutas = require('./routes/busqueda');
-var appRoutes = require('./routes/app');
+const correoRutas = require('./routes/enviarCorreo');
+const ofertaRutas = require('./routes/ofertas');
+const categoriasRoutes = require('./routes/categorias');
+const productoRutas = require('./routes/producto');
+const busquedaRutas = require('./routes/busqueda');
+const appRoutes = require('./routes/app');
 
 
 // body parser
