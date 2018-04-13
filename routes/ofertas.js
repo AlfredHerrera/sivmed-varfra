@@ -1,9 +1,10 @@
-var express = require('express');
+/*jshint esversion: 6 */
+const express = require('express');
 
-var app = express();
+const app = express();
 
 // Importacion de conexion;
-var con = require('../models/conexion');
+const con = require('../models/conexion');
 
 // ========================
 // Obtener Equipos Nuevos Get
