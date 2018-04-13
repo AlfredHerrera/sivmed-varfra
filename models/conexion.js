@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
-const mysql = require('mysql');
+var mysql = require('mysql');
 
-const con = mysql.createConnection({
+var con = mysql.createConnection({
     // host: "localhost",
     // user: "root",
     // password: "root",
@@ -16,7 +16,10 @@ const con = mysql.createConnection({
 });
 
 con.connect(function(err) {
-    if (err) throw err;
+    if (err) {
+        throw err;
+        console.log(err);
+    }
     console.log('Base de datos ONLINE');
 });
 
