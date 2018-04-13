@@ -1,41 +1,20 @@
+/*jshint esversion: 6 */
 var express = require('express');
-var mysql = require('mysql');
+
 var app = express();
 
 // Importacion de conexion;
-var con = mysql.createConnection({
-    // host: "localhost",
-    // user: "root",
-    // password: "root",
-    // database: "varfra",
-    // port: '3306',
-    // socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
-    host: '173.254.61.85',
-    user: 'ventadee_equipo',
-    password: '51v.4dm1n.p455',
-    database: 'ventadee_todoenequipo',
-    port: '3306',
-    connectTimeout: 20000,
-    acquireTimeout: 20000
-
-});
-
-con.connect(function(err) {
-    if (err) {
-        console.log(err);
-    }
-    console.log('Base de datos ONLINE   hola');
-});
+var con = require('../models/conexion');
 
 // =====================================
 // Acceso total
 // =====================================
-app.all('/', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization,   Content-Type, X-Requested-With");
-    res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
-    return next();
-});
+// app.all('/', function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization,   Content-Type, X-Requested-With");
+//     res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+//     return next();
+// });
 
 app.get('/Busqueda', (req, res) => {
 
