@@ -150,7 +150,9 @@ app.all('/', function(req, res, next) {
 // });
 
 app.post('/Correo', (req, res) => {
-
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization,   Content-Type, X-Requested-With");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
     var body = req.body; // Hacemos referencia body-parse
     var fecha = new Date();
     var dd = fecha.getDate();
