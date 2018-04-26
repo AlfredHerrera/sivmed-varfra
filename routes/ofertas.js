@@ -53,31 +53,26 @@ app.post('/Ofertas', (req, res) => {
 
 
 con.reconnect = function(query) {
-    con.connect().then(function(cone) {
-        console.log("connected. getting new reference");
-        con.query(query,
-            (err, rows) => {
-                if (err) {
-                    con.reconnect(query);
-                    return res.status(500).json({
-                        ok: false,
-                        mensaje: 'Error al consultar ofertas',
-                        errors: err
-                    });
-                }
-
-                res.status(200).json({ // Respuesta con codigo 200 que significa que todo esta bien 
-                    ok: true,
-                    data: rows
+    console.log("connected. getting new reference");
+    con.query(query,
+        (err, rows) => {
+            if (err) {
+                con.reconnect(query);
+                return res.status(500).json({
+                    ok: false,
+                    mensaje: 'Error en ofertas',
+                    errors: err
                 });
+            }
+
+            res.status(200).json({ // Respuesta con codigo 200 que significa que todo esta bien 
+                ok: true,
+                data: rows
             });
-        mysql = cone;
-        mysql.on('error', function(err, result) {
-            con.reconnect();
         });
-    }, function(error) {
-        console.log("try again");
-        setTimeout(mysqlAPI.reconnect, 2000);
+    mysql = cone;
+    mysql.on('error', function(err, result) {
+        con.reconnect();
     });
 };
 
