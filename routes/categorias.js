@@ -37,7 +37,7 @@ app.get('/Categorias', (req, res) => {
 // Obtener Equipos de la categoria post
 // =====================================
 
-app.post('/', (req, res) => {
+app.post('/Categorias', (req, res) => {
     var query;
     var body = req.body; // Hacemos referencia body-parse
     // var query = getSQl(body.numero, body.categorias);
