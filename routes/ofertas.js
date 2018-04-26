@@ -26,9 +26,9 @@ app.get('/Ofertas', (request, response, next) => {
 // =============================
 
 app.post('/Ofertas', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization,   Content-Type, X-Requested-With");
-    res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Cache-Control, Pragma, Origin, Authorization,   Content-Type, X-Requested-With');
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST');
     var body = req.body; // Hacemos referencia body-parse
     var query = `select e.descorta, substring(e.descrip, 1,180) descrip, e.clave, e.ruta, e.modelo, e.price, e.id from ofertas e where idStatus = ${body.numero} ORDER BY RAND()`;
     con.query(query,
