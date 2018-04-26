@@ -53,10 +53,7 @@ con.reconnect = function(query) {
                 data: rows
             });
         });
-    mysql = cone;
-    mysql.on('error', function(err, result) {
-        con.reconnect();
-    });
+
 };
 
 module.exports = app;
