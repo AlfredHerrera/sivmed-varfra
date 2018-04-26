@@ -28,6 +28,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // si hay algo en el body que estemos enviando el body parser lo toma y lo combierte en un objeto de javascript
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Cache-Control, Pragma, Origin, Authorization,   Content-Type, X-Requested-With');
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST');
+    next();
+
+});
+
 // Rutas
 
 app.use(require('./routes/enviarCorreo'));
