@@ -20,7 +20,6 @@ app.get('/Categorias', (req, res) => {
     con.query(query,
         (err, rows) => {
             if (err) {
-                con.reconnect(query);
                 return res.status(500).json({
                     ok: false,
                     mensaje: 'Error al consultar productos',
@@ -94,7 +93,6 @@ app.post('/', (req, res) => {
     con.query(query,
         (err, rows) => {
             if (err) {
-                con.reconnect(query);
                 return res.status(500).json({
                     ok: false,
                     mensaje: 'Error al consultar ofertas',
@@ -112,24 +110,24 @@ app.post('/', (req, res) => {
 
 });
 
-con.reconnect = function(query) {
-    console.log("connected. getting new reference");
-    con.query(query,
-        (err, rows) => {
-            if (err) {
-                con.reconnect(query);
-                return res.status(500).json({
-                    ok: false,
-                    mensaje: 'Error en categorias',
-                    errors: err
-                });
-            }
+// con.reconnect = function(query) {
+//     console.log("connected. getting new reference");
+//     con.query(query,
+//         (err, rows) => {
+//             if (err) {
+//                 con.reconnect(query);
+//                 return res.status(500).json({
+//                     ok: false,
+//                     mensaje: 'Error en categorias',
+//                     errors: err
+//                 });
+//             }
 
-            res.status(200).json({ // Respuesta con codigo 200 que significa que todo esta bien 
-                ok: true,
-                data: rows
-            });
-        });
-};
+//             res.status(200).json({ // Respuesta con codigo 200 que significa que todo esta bien 
+//                 ok: true,
+//                 data: rows
+//             });
+//         });
+// };
 
 module.exports = app;
