@@ -18,14 +18,14 @@ var con = mysql.createConnection({
         // acquireTimeout: 20000
 });
 
-con.connect(function(err) {
-    if (err) {
-        console.log(err);
-    } else {
-        // con.query("select e.descorta, substring(e.descrip, 1,180) descrip, e.clave, e.ruta, e.modelo, e.price, e.id from ofertas e where idStatus = 4");
-        console.log('Base de datos ONLINE');
-    }
+// con.connect(function(err) {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         // con.query("select e.descorta, substring(e.descrip, 1,180) descrip, e.clave, e.ruta, e.modelo, e.price, e.id from ofertas e where idStatus = 4");
+//         console.log('Base de datos ONLINE');
+//     }
 
-});
+// });
 
 module.exports = con;
