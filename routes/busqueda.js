@@ -27,9 +27,7 @@ app.get('/Busqueda', (req, res) => {
                 data: rows
             });
         });
-    con.end();
 });
-
 
 // con.reconnect = function(query) {
 //     console.log("connected. getting new reference");
