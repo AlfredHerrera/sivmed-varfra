@@ -266,19 +266,7 @@ let correoPersona = (correo) => {
 
     };
     transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return res.status(500).json({
-                ok: false,
-                mensaje: 'Error al enviar correo',
-                errors: error,
-            });
-        }
 
-
-        res.status(200).json({ // Respuesta con codigo 200 que significa que todo esta bien 
-            ok: true,
-            data: info.messageId,
-        });
     });
 };
 
